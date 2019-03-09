@@ -1,0 +1,27 @@
+﻿@model CryptoRequestViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Cifrare prin metoda substitutiei cu permutare</h1>
+
+<form asp-action="Process" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="EncryptionKey">Cheia de criptare/decriptare</label>
+        <input asp-for="EncryptionKey" type="text" class="form-control" aria-describedby="keyHelp" placeholder="Introduceti cheia de criptare">
+        <small id="keyHelp" class="form-text text-muted">Aceasta cheie va fi folosita pentru criptarea sau decriptarea mesajului</small>
+        <span asp-validation-for="EncryptionKey" class="text-danger">            
+        </span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ProcessedText">Mesaj procesat</label>
+        <textarea asp-for="ProcessedText" class="form-control" rows="6"></textarea>
+        <span asp-validation-for="ProcessedText" class="text-danger">            
+        </span>
+    </div>
+    <button name="cryptoAction" type="submit" value="encrypt" class="btn btn-primary">Criptare</button>
+    <button name="cryptoAction" type="submit" value="decrypt" class="btn btn-success">Decriptare</button>
+</form>
+
